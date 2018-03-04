@@ -1,4 +1,4 @@
-package com.example.owner.freetoeic;
+package com.example.owner.freetoeic.databases.models;
 
 /**
  * Created by Owner on 3/1/2018.

@@ -1,9 +1,11 @@
-package com.example.owner.freetoeic;
+package com.example.owner.freetoeic.databases;
 
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
+
+import com.example.owner.freetoeic.databases.models.TopicModel;
 
 import java.util.ArrayList;
 import java.util.List;
