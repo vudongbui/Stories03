@@ -7,7 +7,7 @@
     android:orientation="vertical"
     tools:context="com.example.owner.freetoeic.activities.MainActivity">
 
-    <LinearLayout
+    <ScrollView
         android:layout_weight="5"
         android:layout_margin="16dp"
         android:layout_height="wrap_content"
@@ -26,10 +26,11 @@
             android:layout_height="wrap_content"
             android:text="actor"
             android:textColor="#4e4e4e"/>
-    </LinearLayout>
+    </ScrollView>
 
-    <LinearLayout
-        android:layout_weight="5"
+    <RelativeLayout
+        android:layout_width="5dp"
+        android:layout_height="5dp"
         android:layout_margin="16dp">
 
         <ImageView
@@ -38,5 +39,5 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"/>
 
-    </LinearLayout>
+    </RelativeLayout>
 </LinearLayout>

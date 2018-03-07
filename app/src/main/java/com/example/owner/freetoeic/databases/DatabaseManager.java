@@ -10,55 +10,53 @@ import com.example.owner.freetoeic.databases.models.StoriesModel;
 import java.util.ArrayList;
 import java.util.List;
 
-import static android.content.ContentValues.TAG;
 
 /**
  * Created by Owner on 3/1/2018.
  */
 
 public class DatabaseManager {
-    private static final String TABLE_TOPIC = "tbl_topic";
-    private static final String TABLE_WORD = "tbl_word";
 
+    private static final String TAG = "DatabaseManager";
+    private static final String TABLE_STORY = "tbl_short_story";
+    private static DatabaseManager databaseManager;
     private SQLiteDatabase sqLiteDatabase;
     private AssetHelper assetHelper;
 
-    private static DatabaseManager databaseManager;
+    public DatabaseManager(Context context) {
+        assetHelper = new AssetHelper(context);
+    }
 
-    public static DatabaseManager getInstance(Context context){
-        if (databaseManager == null){
+
+    public static DatabaseManager getInstance(Context context) {
+        if (databaseManager == null) {
             databaseManager = new DatabaseManager(context);
         }
-        return  databaseManager;
+        return databaseManager;
     }
 
-    public DatabaseManager(Context context) {
-        assetHelper =  new AssetHelper(context);
-    }
-
-    public List<StoriesModel> getListTopic(){
+    public List<StoriesModel> getStoryModelList() {
         sqLiteDatabase = assetHelper.getReadableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM " + TABLE_STORY, null);
 
-        List<StoriesModel> storiesModelList = new ArrayList<>();
 
-        Cursor cursor = sqLiteDatabase.rawQuery("select * from " + TABLE_TOPIC,null);
+
+        List<StoriesModel> storyModelList = new ArrayList<>();
         cursor.moveToFirst();
 
-        while (!cursor.isAfterLast()){
-            //read
+        while (cursor.moveToNext()) {
             int id = cursor.getInt(0);
-            String name = cursor.getString(1);
-            String imageUrl = cursor.getString(3);
-            String category = cursor.getString(4);
-            String color = cursor.getString(5);
-            String lastTime = cursor.getString(6);
+            String author = cursor.getString(5);
+            String image = cursor.getString(1);
+            String content = cursor.getString(4);
+            String title = cursor.getString(2);
+            int bookmark = cursor.getInt(6);
 
-            StoriesModel storiesModel = new StoriesModel(id,name,imageUrl,category,color,lastTime);
-            storiesModelList.add(storiesModel);
-            //next
-            cursor.moveToNext();
+            storyModelList.add(new StoriesModel(id, image, title, content, author, bookmark));
         }
-        Log.d(TAG, "getListTopic: "+ storiesModelList);
-        return storiesModelList;
+
+        Log.d(TAG, "get List: " + storyModelList);
+
+        return storyModelList;
     }
 }
