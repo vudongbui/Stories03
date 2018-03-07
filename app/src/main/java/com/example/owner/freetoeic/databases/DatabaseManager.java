@@ -5,7 +5,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
-import com.example.owner.freetoeic.databases.models.TopicModel;
+import com.example.owner.freetoeic.databases.models.StoriesModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,10 +36,10 @@ public class DatabaseManager {
         assetHelper =  new AssetHelper(context);
     }
 
-    public List<TopicModel> getListTopic(){
+    public List<StoriesModel> getListTopic(){
         sqLiteDatabase = assetHelper.getReadableDatabase();
 
-        List<TopicModel> topicModelList = new ArrayList<>();
+        List<StoriesModel> storiesModelList = new ArrayList<>();
 
         Cursor cursor = sqLiteDatabase.rawQuery("select * from " + TABLE_TOPIC,null);
         cursor.moveToFirst();
@@ -53,12 +53,12 @@ public class DatabaseManager {
             String color = cursor.getString(5);
             String lastTime = cursor.getString(6);
 
-            TopicModel topicModel = new TopicModel(id,name,imageUrl,category,color,lastTime);
-            topicModelList.add(topicModel);
+            StoriesModel storiesModel = new StoriesModel(id,name,imageUrl,category,color,lastTime);
+            storiesModelList.add(storiesModel);
             //next
             cursor.moveToNext();
         }
-        Log.d(TAG, "getListTopic: "+ topicModelList);
-        return topicModelList;
+        Log.d(TAG, "getListTopic: "+ storiesModelList);
+        return storiesModelList;
     }
 }

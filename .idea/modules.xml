@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/FreeTOEIC.iml" filepath="$PROJECT_DIR$/FreeTOEIC.iml" />
+      <module fileurl="file://E:\Stories03\FreeTOEIC.iml" filepath="E:\Stories03\FreeTOEIC.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Stories03.iml" filepath="$PROJECT_DIR$/.idea/Stories03.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://E:\Stories03\app\app.iml" filepath="E:\Stories03\app\app.iml" />
     </modules>
   </component>
 </project>
