@@ -29,7 +29,7 @@ public class DatabaseManager {
         Cursor cursor = sqLiteDatabase.rawQuery("select * from tbl_short_story", null);
         cursor.moveToFirst();
 
-        while (!cursor.moveToNext()) {
+        while (!cursor.isAfterLast()) {
             String title = cursor.getString(2);
             String author = cursor.getString(5);
             String image = cursor.getString(1);

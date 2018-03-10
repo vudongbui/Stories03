@@ -21,7 +21,6 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 public class Adapter extends BaseAdapter {
-    private static final String TAG = "ListViewAdapter";
 
     private List<StoriesModel> itemModelList;
     Context context;
@@ -49,14 +48,14 @@ public class Adapter extends BaseAdapter {
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         LayoutInflater layoutInflater = LayoutInflater.from(viewGroup.getContext());
+
         view = layoutInflater.inflate(R.layout.item_stories, viewGroup, false);
 
         TextView tvAuthor = view.findViewById(R.id.tv_author);
         ImageView ivImage = view.findViewById(R.id.iv_image);
         TextView tvTitle = view.findViewById(R.id.tv_title);
-
-        tvTitle.setText(itemModelList.get(i).title);
         tvAuthor.setText(itemModelList.get(i).author);
+        tvTitle.setText(itemModelList.get(i).title);
         Picasso.with(context).load(itemModelList.get(i).image).fit().into(ivImage);
 
         return view;
