@@ -18,11 +18,11 @@ import java.util.List;
 
 public class DatabaseManager {
     private static SQLiteDatabase sqLiteDatabase;
-    private static AssetHelper assestHelper;
+    private static AssetHelper assetHelper;
 
     public static List<StoriesModel> getListItem(Context context) {
-        AssetHelper assetHelper = new AssetHelper(context);
-        sqLiteDatabase = assestHelper.getReadableDatabase();
+        assetHelper = new AssetHelper(context);
+        sqLiteDatabase = assetHelper.getReadableDatabase();
 
         List<StoriesModel> itemModelList = new ArrayList<>();
 
