@@ -12,7 +12,9 @@ public class AssetHelper extends SQLiteAssetHelper {
 
     private static final String DATABASE_NAME = "short_story.db";
     private static final int DATABASE_VERSION = 2;
+
     public AssetHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
+
     }
 }

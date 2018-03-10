@@ -21,60 +21,50 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 public class Adapter extends BaseAdapter {
-    private static final String TAG = "StoriesAdapter";
-    private Context context;
-    public List<StoriesModel> storiesModelList ;
-    private LayoutInflater layoutInflater;
+    private static final String TAG = "ListViewAdapter";
 
-    public Adapter(Context context, List<StoriesModel> storiesModelList ){
+    private List<StoriesModel> itemModelList;
+    Context context;
+
+    public Adapter(Context context, List<StoriesModel> itemModelList) {
         this.context = context;
-        this.storiesModelList = storiesModelList;
-        this.layoutInflater = LayoutInflater.from(context);
+        this.itemModelList = itemModelList;
     }
 
     @Override
     public int getCount() {
-        return storiesModelList.size();
+        return itemModelList.size();
     }
 
     @Override
-    public Object getItem(int position) {
-        return storiesModelList.get(position);
+    public Object getItem(int i) {
+        return itemModelList.get(i);
     }
 
     @Override
-    public long getItemId(int position) {
-        return position;
+    public long getItemId(int i) {
+        return i;
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        HolderView holderView;
+    public View getView(int i, View view, ViewGroup viewGroup) {
+        LayoutInflater layoutInflater = LayoutInflater.from(viewGroup.getContext());
+        view = layoutInflater.inflate(R.layout.item_stories, viewGroup, false);
 
-        if(convertView == null){
-            holderView = new HolderView();
-            holderView.tvTitle = (TextView) convertView.findViewById(R.id.tv_title);
-            holderView.ivPicture  = (ImageView) convertView.findViewById(R.id.iv_image);
-            convertView.setTag(holderView);
-        }else{
-            holderView = (HolderView) convertView.getTag();
-        }
+        TextView tvAuthor = view.findViewById(R.id.tv_author);
+        ImageView ivImage = view.findViewById(R.id.iv_image);
+        TextView tvTitle = view.findViewById(R.id.tv_title);
 
+        tvTitle.setText(itemModelList.get(i).title);
+        tvAuthor.setText(itemModelList.get(i).author);
+        Picasso.with(context).load(itemModelList.get(i).image).fit().into(ivImage);
 
-
-        Log.d(TAG, "getView: " + " define comop");
-
-        StoriesModel storiesModel = storiesModelList.get(position);
-
-        holderView.tvTitle.setText(storiesModel.title);
-        holderView.tvAuthor.setText(storiesModel.author);
-        Picasso.with(context).load(storiesModel.image).into(holderView.ivPicture);
-        return convertView;
+        return view;
     }
-
     private class HolderView {
         public TextView tvTitle;
         public TextView tvAuthor;
         public ImageView ivPicture;
     }
 }
+

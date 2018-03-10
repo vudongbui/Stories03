@@ -3,6 +3,7 @@ package com.example.owner.freetoeic.databases;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import com.example.owner.freetoeic.databases.models.StoriesModel;
@@ -16,47 +17,29 @@ import java.util.List;
  */
 
 public class DatabaseManager {
+    private static SQLiteDatabase sqLiteDatabase;
+    private static AssetHelper assestHelper;
 
-    private static final String TAG = "DatabaseManager";
-    private static final String TABLE_STORY = "tbl_short_story";
-    private static DatabaseManager databaseManager;
-    private SQLiteDatabase sqLiteDatabase;
-    private AssetHelper assetHelper;
+    public static List<StoriesModel> getListItem(Context context) {
+        AssetHelper assetHelper = new AssetHelper(context);
+        sqLiteDatabase = assestHelper.getReadableDatabase();
 
-    public DatabaseManager(Context context) {
-        assetHelper = new AssetHelper(context);
-    }
+        List<StoriesModel> itemModelList = new ArrayList<>();
 
-
-    public static DatabaseManager getInstance(Context context) {
-        if (databaseManager == null) {
-            databaseManager = new DatabaseManager(context);
-        }
-        return databaseManager;
-    }
-
-    public List<StoriesModel> getStoryModelList() {
-        sqLiteDatabase = assetHelper.getReadableDatabase();
-        Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM " + TABLE_STORY, null);
-
-
-
-        List<StoriesModel> storyModelList = new ArrayList<>();
+        Cursor cursor = sqLiteDatabase.rawQuery("select * from tbl_short_story", null);
         cursor.moveToFirst();
 
-        while (cursor.moveToNext()) {
-            int id = cursor.getInt(0);
+        while (!cursor.moveToNext()) {
+            String title = cursor.getString(2);
             String author = cursor.getString(5);
             String image = cursor.getString(1);
-            String content = cursor.getString(4);
-            String title = cursor.getString(2);
-            int bookmark = cursor.getInt(6);
 
-            storyModelList.add(new StoriesModel(id, image, title, content, author, bookmark));
+            StoriesModel storiesModel = new StoriesModel(title, author, image);
+            itemModelList.add(storiesModel);
+
+            cursor.moveToNext();
         }
 
-        Log.d(TAG, "get List: " + storyModelList);
-
-        return storyModelList;
+        return itemModelList;
     }
 }

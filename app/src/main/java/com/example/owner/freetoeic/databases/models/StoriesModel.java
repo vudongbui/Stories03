@@ -5,20 +5,14 @@ package com.example.owner.freetoeic.databases.models;
  */
 
 public class StoriesModel {
-    public int id;
-    public String image;
     public String title;
-    public String content;
     public String author;
-    public int bookmark;
+    public String image;
 
-    public StoriesModel(int id, String image, String title, String content, String author, int bookmark) {
-        this.id = id;
-        this.image = image;
+    public StoriesModel(String title, String author, String image) {
         this.title = title;
-        this.content = content;
         this.author = author;
-        this.bookmark = bookmark;
+        this.image = image;
     }
 
     @Override

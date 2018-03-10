@@ -1,43 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    tools:context="com.example.owner.freetoeic.activities.MainActivity">
+    android:padding="8dp">
 
-    <ScrollView
-        android:layout_weight="5"
-        android:layout_margin="16dp"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+    <android.support.v7.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/tv_title"
+        <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Title"
-            android:textColor="#696969"/>
+            android:padding="10dp">
 
-        <TextView
-            android:id="@+id/tv_author"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="actor"
-            android:textColor="#4e4e4e"/>
-    </ScrollView>
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp" />
 
-    <RelativeLayout
-        android:layout_width="5dp"
-        android:layout_height="5dp"
-        android:layout_margin="16dp">
+            <TextView
+                android:id="@+id/tv_author"
+                android:layout_below="@+id/tv_title"
+                android:text="Author"
+                android:textSize="20dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
 
-        <ImageView
-            android:id="@+id/iv_image"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"/>
+            <ImageView
+                android:id="@+id/iv_image"
+                android:src="@drawable/ic_launcher_background"
+                android:layout_width="108dp"
+                android:layout_height="108dp"
+                android:layout_alignParentEnd="true"
+                />
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
 
-    </RelativeLayout>
 </LinearLayout>
