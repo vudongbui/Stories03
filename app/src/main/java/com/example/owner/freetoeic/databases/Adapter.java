@@ -57,7 +57,9 @@ public class Adapter extends BaseAdapter {
         tvAuthor.setText(itemModelList.get(i).author);
         tvTitle.setText(itemModelList.get(i).title);
 
-        Picasso.with(context).load(itemModelList.get(i).image).into(ivImage);
+        String URL = itemModelList.get(i).image;
+
+        Picasso.with(context).load(URL).into(ivImage);
 
         return view;
     }
