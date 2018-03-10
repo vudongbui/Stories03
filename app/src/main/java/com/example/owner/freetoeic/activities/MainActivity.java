@@ -18,5 +18,7 @@ public class MainActivity extends AppCompatActivity {
         ListView listview = findViewById(R.id.lv_story);
         Adapter Adapter = new Adapter(this, DatabaseManager.getListItem(this));
         listview.setAdapter(Adapter);
+
+
     }
 }

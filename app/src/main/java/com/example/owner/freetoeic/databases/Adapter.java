@@ -56,7 +56,8 @@ public class Adapter extends BaseAdapter {
         TextView tvTitle = view.findViewById(R.id.tv_title);
         tvAuthor.setText(itemModelList.get(i).author);
         tvTitle.setText(itemModelList.get(i).title);
-        Picasso.with(context).load(itemModelList.get(i).image).fit().into(ivImage);
+
+        Picasso.with(context).load(itemModelList.get(i).image).into(ivImage);
 
         return view;
     }
