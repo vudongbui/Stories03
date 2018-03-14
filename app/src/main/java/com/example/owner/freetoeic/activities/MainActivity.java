@@ -25,7 +25,8 @@ public class MainActivity extends AppCompatActivity {
         listview.setAdapter(adapter);
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+            public void onItemClick(AdapterView adapterView, View view, int i, long l) {
+
                 Intent intent = new Intent(MainActivity.this, StoriesActivity.class);
                 intent.putExtra("Story", i);
                 startActivity(intent);

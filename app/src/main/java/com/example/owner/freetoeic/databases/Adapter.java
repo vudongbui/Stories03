@@ -20,22 +20,22 @@ import java.util.List;
 
 public class Adapter extends BaseAdapter {
 
-    private List<StoriesModel> itemModelList;
+    private List<StoriesModel> storiesModelList;
     Context context;
 
-    public Adapter(Context context, List<StoriesModel> itemModelList) {
+    public Adapter(Context context, List<StoriesModel> storiesModelList) {
         this.context = context;
-        this.itemModelList = itemModelList;
+        this.storiesModelList = storiesModelList;
     }
 
     @Override
     public int getCount() {
-        return itemModelList.size();
+        return storiesModelList.size();
     }
 
     @Override
     public Object getItem(int i) {
-        return itemModelList.get(i);
+        return storiesModelList.get(i);
     }
 
     @Override
@@ -52,10 +52,10 @@ public class Adapter extends BaseAdapter {
         TextView tvAuthor = view.findViewById(R.id.tv_author);
         ImageView ivImage = view.findViewById(R.id.iv_image);
         TextView tvTitle = view.findViewById(R.id.tv_title);
-        tvAuthor.setText(itemModelList.get(i).author);
-        tvTitle.setText(itemModelList.get(i).title);
+        tvAuthor.setText(storiesModelList.get(i).author);
+        tvTitle.setText(storiesModelList.get(i).title);
 
-        String URL = itemModelList.get(i).image;
+        String URL = storiesModelList.get(i).image;
 
         Picasso.with(context).load(URL).centerCrop().fit().into(ivImage);
 

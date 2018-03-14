@@ -37,7 +37,7 @@ public class StoriesActivity extends AppCompatActivity implements View.OnClickLi
         tvTitle = findViewById(R.id.tv_title);
         tvAuthor = findViewById(R.id.tv_author);
 
-        story = getIntent().getIntExtra("item", -1);
+        story = getIntent().getIntExtra("stories", -1);
         storiesModel = DatabaseManager.getListStory(this).get(story);
         ivBack.setOnClickListener(this);
         Picasso.with(this).load(storiesModel.image).centerCrop().fit().into(ivImage);
