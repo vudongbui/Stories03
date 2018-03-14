@@ -36,7 +36,7 @@
                 android:textSize="15dp" />
             <ImageView
 
-                android:srcCompat="@drawable/ic_launcher_background"
+                app:srcCompat="@drawable/ic_launcher_background"
                 android:layout_width="108dp"
                 android:layout_height="108dp"
                 android:layout_alignParentEnd="true"

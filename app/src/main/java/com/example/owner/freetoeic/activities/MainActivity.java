@@ -10,6 +10,7 @@ import android.widget.ListView;
 import com.example.owner.freetoeic.databases.Adapter;
 import com.example.owner.freetoeic.databases.DatabaseManager;
 import com.example.owner.freetoeic.R;
+import com.example.owner.freetoeic.databases.models.StoriesModel;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
@@ -19,9 +20,17 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         ListView listview = findViewById(R.id.lv_story);
-        Adapter Adapter = new Adapter(this, DatabaseManager.getListItem(this));
-        listview.setAdapter(Adapter);
+        final Adapter adapter = new Adapter(this, DatabaseManager.getListItem(this));
+        listview.setAdapter(adapter);
 
+        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent = new Intent(MainActivity.this, StoriesActivity.class);
+                intent.putExtra("Story", i);
+                startActivity(intent);
+            }
+        });
 
     }
     @Override
@@ -29,14 +38,13 @@ public class MainActivity extends AppCompatActivity {
         super.onStart();
 
         ListView listview = findViewById(R.id.lv_story);
-        Adapter Adapter = new Adapter(this, DatabaseManager.getListItem(this));
-        listview.setAdapter(Adapter);
-
+        Adapter adapter = new Adapter(this, DatabaseManager.getListItem(this));
+        listview.setAdapter(adapter);
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent(MainActivity.this, StoriesActivity.class);
-                intent.putExtra("item", i);
+                intent.putExtra("Story", i);
                 startActivity(intent);
             }
         });

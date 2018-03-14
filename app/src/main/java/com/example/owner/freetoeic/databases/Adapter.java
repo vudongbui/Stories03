@@ -57,7 +57,7 @@ public class Adapter extends BaseAdapter {
 
         String URL = itemModelList.get(i).image;
 
-        Picasso.with(context).load(URL).into(ivImage);
+        Picasso.with(context).load(URL).centerCrop().fit().into(ivImage);
 
         return view;
     }

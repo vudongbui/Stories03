@@ -24,7 +24,7 @@ public class DatabaseManager {
         assetHelper = new AssetHelper(context);
         sqLiteDatabase = assetHelper.getReadableDatabase();
 
-        List<StoriesModel> itemModelList = new ArrayList<>();
+        List<StoriesModel> StoriesModelList = new ArrayList<>();
 
         Cursor cursor = sqLiteDatabase.rawQuery("select * from tbl_short_story", null);
         cursor.moveToFirst();
@@ -39,11 +39,11 @@ public class DatabaseManager {
             int bookmark = cursor.getInt(6);
 
             StoriesModel storiesModel = new StoriesModel(title, author, image,description,content,id,bookmark);
-            itemModelList.add(storiesModel);
+            StoriesModelList.add(storiesModel);
 
             cursor.moveToNext();
         }
 
-        return itemModelList;
+        return StoriesModelList;
     }
 }

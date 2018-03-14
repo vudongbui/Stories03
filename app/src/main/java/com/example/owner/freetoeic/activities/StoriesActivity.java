@@ -56,11 +56,7 @@ public class StoriesActivity extends AppCompatActivity implements View.OnClickLi
     public void showStory() {
         ivBack.setOnClickListener(this);
 
-        Picasso.with(this)
-                .load(storiesModel2.image)
-                .centerCrop()
-                .fit()
-                .into(ivImage2);
+        Picasso.with(this).load(storiesModel2.image).centerCrop().fit().into(ivImage2);
         tvTitle2.setText(storiesModel2.title);
         tvAuthor2.setText(storiesModel2.author);
         tvDescription2.setText(storiesModel2.description);
