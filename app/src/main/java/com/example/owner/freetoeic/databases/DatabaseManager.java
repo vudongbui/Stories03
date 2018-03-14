@@ -33,8 +33,12 @@ public class DatabaseManager {
             String title = cursor.getString(2);
             String author = cursor.getString(5);
             String image = cursor.getString(1);
+            String description = cursor.getString(3);
+            String content = cursor.getString(4);
+            int id = cursor.getInt(0);
+            int bookmark = cursor.getInt(6);
 
-            StoriesModel storiesModel = new StoriesModel(title, author, image);
+            StoriesModel storiesModel = new StoriesModel(title, author, image,description,content,id,bookmark);
             itemModelList.add(storiesModel);
 
             cursor.moveToNext();

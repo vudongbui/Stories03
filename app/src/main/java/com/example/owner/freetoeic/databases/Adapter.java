@@ -6,8 +6,6 @@ package com.example.owner.freetoeic.databases;
 
 
 import android.content.Context;
-import android.text.Layout;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,7 +51,7 @@ public class Adapter extends BaseAdapter {
 
         TextView tvAuthor = view.findViewById(R.id.tv_author);
         ImageView ivImage = view.findViewById(R.id.iv_image);
-        TextView tvTitle = view.findViewById(R.id.tv_title);
+        TextView tvTitle = view.findViewById(R.id.tv_title2);
         tvAuthor.setText(itemModelList.get(i).author);
         tvTitle.setText(itemModelList.get(i).title);
 
