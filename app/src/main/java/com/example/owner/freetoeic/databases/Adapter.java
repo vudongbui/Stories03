@@ -51,7 +51,7 @@ public class Adapter extends BaseAdapter {
 
         TextView tvAuthor = view.findViewById(R.id.tv_author);
         ImageView ivImage = view.findViewById(R.id.iv_image);
-        TextView tvTitle = view.findViewById(R.id.tv_title2);
+        TextView tvTitle = view.findViewById(R.id.tv_title);
         tvAuthor.setText(itemModelList.get(i).author);
         tvTitle.setText(itemModelList.get(i).title);
 
@@ -60,11 +60,6 @@ public class Adapter extends BaseAdapter {
         Picasso.with(context).load(URL).centerCrop().fit().into(ivImage);
 
         return view;
-    }
-    private class HolderView {
-        public TextView tvTitle;
-        public TextView tvAuthor;
-        public ImageView ivPicture;
     }
 }
 

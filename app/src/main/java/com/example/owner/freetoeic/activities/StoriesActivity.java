@@ -19,13 +19,12 @@ import com.squareup.picasso.Picasso;
 public class StoriesActivity extends AppCompatActivity implements View.OnClickListener {
     private static final String TAG = "StoriesActivity";
 
-    StoriesModel storiesModel2;
+    int story;
+    StoriesModel storiesModel;
     ImageView ivBack;
-    ImageView ivBookmark2;
-    ImageView ivImage2;
-    TextView tvTitle2;
-    TextView tvAuthor2;
-    TextView tvDescription2;
+    ImageView ivImage;
+    TextView tvTitle;
+    TextView tvAuthor;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,12 +33,16 @@ public class StoriesActivity extends AppCompatActivity implements View.OnClickLi
         getSupportActionBar().hide();
 
         ivBack = findViewById(R.id.iv_back);
-        ivImage2 = findViewById(R.id.iv_image2);
-        tvTitle2 = findViewById(R.id.tv_title2);
-        tvAuthor2 = findViewById(R.id.tv_author);
-        tvDescription2 = findViewById(R.id.tv_main2);
+        ivImage = findViewById(R.id.iv_image);
+        tvTitle = findViewById(R.id.tv_title);
+        tvAuthor = findViewById(R.id.tv_author);
 
-        showStory();
+        story = getIntent().getIntExtra("item", -1);
+        storiesModel = DatabaseManager.getListStory(this).get(story);
+        ivBack.setOnClickListener(this);
+        Picasso.with(this).load(storiesModel.image).centerCrop().fit().into(ivImage);
+        tvTitle.setText(storiesModel.title);
+        tvAuthor.setText(storiesModel.author);
     }
 
     @Override
@@ -52,14 +55,5 @@ public class StoriesActivity extends AppCompatActivity implements View.OnClickLi
                 break;
 
         }
-    }
-    public void showStory() {
-        ivBack.setOnClickListener(this);
-
-        Picasso.with(this).load(storiesModel2.image).centerCrop().fit().into(ivImage2);
-        tvTitle2.setText(storiesModel2.title);
-        tvAuthor2.setText(storiesModel2.author);
-        tvDescription2.setText(storiesModel2.description);
-
     }
 }

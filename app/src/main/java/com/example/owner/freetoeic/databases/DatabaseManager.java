@@ -20,7 +20,7 @@ public class DatabaseManager {
     private static SQLiteDatabase sqLiteDatabase;
     private static AssetHelper assetHelper;
 
-    public static List<StoriesModel> getListItem(Context context) {
+    public static List<StoriesModel> getListStory(Context context) {
         assetHelper = new AssetHelper(context);
         sqLiteDatabase = assetHelper.getReadableDatabase();
 
